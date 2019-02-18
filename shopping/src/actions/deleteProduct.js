@@ -1,11 +1,8 @@
-
-const deleteProduct = (id) => {
-  return(
-      {
-          type:'deleteProduct',
-          productId:id
-      }
-  )
+const deleteProduct = id => {
+  return {
+    type: "DELETE_PRODUCT",
+    productId: id
+  };
 };
 
 export default deleteProduct;
