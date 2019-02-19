@@ -3,7 +3,7 @@ import counterAction from "../action/counterAction";
 import { connect } from "react-redux";
 
 class Counter extends Component {
-  constructo(props) {
+  constructor(props) {
     super(props);
   }
 

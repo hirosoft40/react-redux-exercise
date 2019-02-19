@@ -9,6 +9,7 @@ const store = createStore(counter);
 
 ReactDOM.render(
   <Provider store={store}>
+    
     <Counter />
   </Provider>,
   document.getElementById("root")
