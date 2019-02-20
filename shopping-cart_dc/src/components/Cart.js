@@ -5,35 +5,42 @@ import addProduct from "../actions/addProduct";
 class Cart extends Component {
   constructor(props) {
     super(props);
+    console.log("Cart", props);
   }
 
   render() {
-    const product = this.props.productCart.map(product => {
+    var product = this.props.productCart.map(item => {
       return (
-        <div>
-          <p>
-            {product.productName} - {product.productNumber} - $
-            {product.productPrice}
-        </p>
-        </div>
+        <li key={item.productName}>
+          {item.productName} - {item.productCount} - ${item.subTotal}
+        </li>
       );
     });
 
-    return(<div>{product}</div>);
-
+    return (
+      <div>
+        {product}
+        <br />
+        <p>Total ${this.props.totalCost}</p>
+      </div>
+    );
   }
 }
-function mapStateToProps(state) {
-    return {
-      totalCost: state.cartReducer.totalCost,
-      productCart: state.cartReducer.productCart
-    };
-  }
-  
-  function mapDispatchToProps(dispatch) {
-    return {
-      onAddProduct: productData => dispatch(addProduct(productData))
-    };
-  }
 
-export default Cart;
+function mapStateToProps(state) {
+  return {
+    totalCost: state.totalCost,
+    productCart: state.productCart
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onAddProduct: productData => dispatch(addProduct(productData))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Cart);

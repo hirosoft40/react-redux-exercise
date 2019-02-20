@@ -3,8 +3,9 @@ function addProduct(item) {
     type: "addProduct",
     product: {
       productName: item.productName,
-      productNumber: item.productNumber,
-      productPrice:item.productPrice
+      productCount: item.productCount,
+      productPrice: item.productPrice,
+      subTotal:item.subTotal
     }
   };
 }

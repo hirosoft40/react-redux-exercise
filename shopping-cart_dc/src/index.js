@@ -8,8 +8,10 @@ import NavBar from "./components/NavBar";
 import ProductsTable from "./components/ProductsTable";
 import Cart from "./components/Cart";
 import { Container, Row, Col } from "react-bootstrap";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-const store = createStore(cartReducer);
+const store = createStore(cartReducer,composeWithDevTools()
+);
 
 ReactDOM.render(
   <Provider store={store}>

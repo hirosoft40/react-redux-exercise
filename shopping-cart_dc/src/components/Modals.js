@@ -3,6 +3,8 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import addProduct from "../actions/addProduct";
+import uuid from "uuid";
+import { connect } from "react-redux";
 
 class Modals extends Component {
   constructor(props) {
@@ -10,9 +12,10 @@ class Modals extends Component {
 
     this.state = {
       show: false,
-      productNumber: 0,
-      productName: "",
-      productPrice: 0
+      productCount: 0,
+      // productName: "",
+      // productPrice: 0,
+      subTotal: 0
     };
   }
 
@@ -20,17 +23,17 @@ class Modals extends Component {
     this.setState({ show: false });
   }
 
+  saveProductCount = e => {
+    this.setState({
+      productCount: parseInt(e.target.value)
+    });
+  };
+
   handleShow() {
     this.setState({
-      productName: this.props.productName,
-      productPrice: this.props.productPrice,
+      // productPrice: this.props.productPrice,
+      // productName: this.props.productName,
       show: true
-    });
-  }
-
-  addProduct(e) {
-    this.setState({
-      productNumber: e.target.value
     });
   }
 
@@ -47,19 +50,19 @@ class Modals extends Component {
 
           <Modal.Body>
             <p>Would you like to add {this.props.productName} to cart?</p>
-            <p>
-              How many? Currently {this.props.currentProductNumber} items in
-              your cart.
-            </p>
+            <p>How many? Currently "後で変更" items in your cart.</p>
             <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Label>Select Numbers</Form.Label>
-              <Form.Control as="select">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <Form.Control
+                as="select"
+                onChange={e => this.saveProductCount(e)}
+              >
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
               </Form.Control>
             </Form.Group>
           </Modal.Body>
@@ -68,7 +71,19 @@ class Modals extends Component {
             <Button variant="secondary" onClick={this.handleClose.bind(this)}>
               Cancel
             </Button>
-            <Button variant="primary" onClick={e => this.addProduct(e)}>
+            <Button
+              variant="primary"
+              onClick={() =>
+                this.props.onAddProduct({
+                  productName: this.props.productName,
+                  productPrice: this.props.productPrice,
+                  productCount: this.state.productCount,
+                  subTotal:
+                    parseInt(this.props.productPrice) *
+                    parseInt(this.state.productCount)
+                })
+              }
+            >
               Ok
             </Button>
           </Modal.Footer>
@@ -80,10 +95,9 @@ class Modals extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
-    totalCost: state.cartReducer.totalCost,
-    productCart: state.cartReducer.productCart
+    totalCost: state.totalCost,
+    productCart: state.productCart
   };
 }
 
@@ -93,4 +107,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default Modals;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Modals);

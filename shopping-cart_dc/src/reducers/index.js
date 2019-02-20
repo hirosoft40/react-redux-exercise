@@ -6,18 +6,18 @@ function cartReducer(state, action) {
     };
   }
 
-  const { productName, productPrice, productNumber } = action.product;
+  const { productName, productPrice, productCount, subTotal } = action.product;
 
   switch (action.type) {
     case "addProduct":
       return {
         ...state,
-        totalCost:
-          state.totalCost + parseInt(productPrice) * parseInt(productNumber),
+        totalCost:state.totalCost + parseInt(subTotal),
         productCart: state.productCart.concat({
           productName,
           productPrice,
-          productNumber
+          productCount,
+          subTotal
         })
       };
     default:
