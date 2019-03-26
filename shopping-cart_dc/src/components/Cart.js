@@ -5,7 +5,6 @@ import addProduct from "../actions/addProduct";
 class Cart extends Component {
   constructor(props) {
     super(props);
-    console.log("Cart", props);
   }
 
   render() {
