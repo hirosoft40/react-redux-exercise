@@ -37,6 +37,5 @@ mouse move => dont' want to listen when component unmounted. This will cause mem
 document.title, network request ==> run side-effect and leave it
 
 ### Geolocation
-
 can get latitude and longitude. Watch our current positoin and see if it changes. If we are moving, we can get current speed as it is watching.
 Navigator.online = true # connected to internet

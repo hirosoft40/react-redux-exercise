@@ -1,6 +1,30 @@
 # react-redux-exercise
+
 React and Redux projects to learn React, Redux from DigitalCrafts and Udemy
 
+# Folders
+
+<ul>
+<li>JWT</li>
+DigitalCraft JWT
+<li>blog_sgrider6</li>
+<a href='https://www.udemy.com/react-redux/'>Modern React with Redux [2019 Update]</a><br/>
+Mainly learned Redux basics
+<li>lecture</li>
+DigitalCraft lectures
+<li>react-hook-intro</li>
+<a href='https://www.udemy.com/react-hooks/'>React Hooks by Reed Barger</a>
+Good introduction of react hook. Fast.
+
+<li>hook-news</li>
+<a href='https://www.udemy.com/react-hooks/'>React Hooks by Reed Barger</a>
+useState, useEffect, useRef, Tailwind CSS
+
+<li>react-hook-todo</li>
+<a href='https://www.udemy.com/react-hooks/'>React Hooks by Reed Barger</a>
+
+<li></li>
+</ul>
 # Cover
 * React LifeCycle: knowS LifeCycle method, but still not 100. So review and practice
 * React Hooks
@@ -10,6 +34,7 @@ React and Redux projects to learn React, Redux from DigitalCrafts and Udemy
 * GraphQL
 
 # Study Plan
+
 <ol>
 <li><a href='https://www.udemy.com/react-hooks/'>React Hooks by Reed Barger</a></li>
 3 hours course 
